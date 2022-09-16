@@ -10,8 +10,8 @@ RUN apt-get update -y && \
         apt-get clean && \
         rm -rf /tmp/*
 
-ENV UID 1000
-ENV USERNAME ben
+ARG UID=1000
+ARG USERNAME=player
 RUN useradd -u ${UID} -G video,adm,sudo -ms /bin/bash ${USERNAME}
 
 USER ${USERNAME}
@@ -20,4 +20,5 @@ WORKDIR /home/${USERNAME}
 ENV USER ${USERNAME}
 ENV HOME /home/${USERNAME}
 
-CMD /bin/bash
+ENTRYPOINT ["playonlinux"]
+CMD []

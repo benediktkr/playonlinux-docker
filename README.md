@@ -13,18 +13,12 @@ mkdir ~/playonlinux
 pull and run the image from dockerhub:
 
 ```shell
-docker run --rm -it --privileged \
-  --device /dev/dri/card0:/dev/dri/card0 \
-  -e DISPLAY=:0 \
-  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-  -v /dev/snd:/dev/snd:rw \
-  -v ~/playonlinux:/home/player:rw \
-  benediktkr/playonlinux:latest
+docker run --rm -it --privileged --device /dev/dri/card0:/dev/dri/card0  -e DISPLAY=:0  -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v /dev/snd:/dev/snd:rw -v ~/playonlinux:/home/player:rw benediktkr/playonlinux:latest
 ```
 
 if you want to run with a different UID and/or username, you can build the image.
 
-## 3d hardware acceleration
+### 3d hardware acceleration
 
 hardware accelertion is possible, but you may have to install the correct drivers in 
 the `Dockerfile` (pull requests welcome). the intel drivers are installed by default

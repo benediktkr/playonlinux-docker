@@ -11,14 +11,14 @@ RUN apt-get update -y && \
         rm -rf /tmp/*
 
 ARG UID=1000
-ARG USERNAME=player
-RUN useradd -u ${UID} -G video,adm,sudo -ms /bin/bash ${USERNAME}
+ARG USER_NAME=player
+RUN useradd -u ${UID} -G video,adm,sudo -ms /bin/bash ${USER_NAME}
 
-USER ${USERNAME}
-WORKDIR /home/${USERNAME}
+USER ${USER_NAME}
+WORKDIR /home/${USER_NAME}
 
-ENV USER ${USERNAME}
-ENV HOME /home/${USERNAME}
+ENV USER ${USER_NAME}
+ENV HOME /home/${USER_NAME}
 
 ENTRYPOINT ["playonlinux"]
 CMD []

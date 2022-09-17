@@ -29,14 +29,14 @@ if you want to run with a different UID and/or username, you can build the image
 
 ### 3d hardware acceleration
 
-hardware accelertion is possible, but you may have to install the correct drivers in 
+hardware accelertion is possible, but you may have to install the correct drivers in
 the `Dockerfile` (pull requests welcome). the intel drivers are installed by default
-in the ubuntu image. 
+in the ubuntu image.
 
 to pass your card to the container (as tested on an intel card):
 
 ```shell
---device /dev/dri/card0:/dev/dri/card0 
+--device /dev/dri/card0:/dev/dri/card0
 ```
 
 modify as needed for other cards
@@ -53,7 +53,7 @@ docker build -t playonlinux .
 if you need or want to use a different UID or username:
 
 ```shell
-docker build --build-arg UID=1001 --build-arg USERNAME=user -t playonlinux .
+docker build --build-arg UID=1001 --build-arg USER_NAME=user -t playonlinux .
 ```
 
 ## running the container
@@ -82,11 +82,11 @@ docker run --rm -it --privileged \
   playonlinux --run Steam
 ```
 
-the `ENTRYPOINT` of the container is the `playonlinux` binary, and any arguments you 
-pass are passed to it. 
+the `ENTRYPOINT` of the container is the `playonlinux` binary, and any arguments you
+pass are passed to it.
 
 these examples pass `--rm` to `docker run` to avoid leaving lingering stopped containers,
-so you should mount `/home/player` to a directory to keep your installs and game saves. 
+so you should mount `/home/player` to a directory to keep your installs and game saves.
 
 ## source
 
@@ -95,5 +95,3 @@ git repo: [git.sudo.is/ben/playonlinux-docker](https://git.sudo.is/ben/playonlin
 github: [benediktkr/playonlinux-docker](https://github.com/benediktkr/playonlinux-docker)
 
 docker hub: [benediktkr/playonlinux](https://hub.docker.com/r/benediktkr/playonlinux)
-
-

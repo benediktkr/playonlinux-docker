@@ -1,15 +1,15 @@
 
 # playonlinux-docker
 [![Build Status](https://jenkins.sudo.is/buildStatus/icon?job=ben%2Fplayonlinux-docker%2Fmain&style=flat-square)](https://jenkins.sudo.is/job/ben/job/playonlinux-docker/job/main/)
-![git](https://img.shields.io/website?label=git&up_message=ben%2Fplayonlinux-docker&url=https%3A%2F%2Fgit.sudo.is%2Fben%2Fplayonlinux-docker)
-![github](https://img.shields.io/website?label=github&up_message=ben%2Fplayonlinux-docker&url=https%3A%2F%2Fgithub.com%2Fbenediktkr%2Fplayonlinux-docker&color=orange)
+[![git](docs/img/shields/git.sudo.is-ben-playonlinux-docker.svg)](https://git.sudo.is/ben/playonlinux-docker)
+[![github](https://git.sudo.is/ben/infra/media/branch/main/docs/img/shields/github-benediktkr.svg)](https://github.com/benediktkr/playonlinux-docker)
 ![Docker pulls](https://img.shields.io/docker/pulls/benediktkr/playonlinux?sort=semver&color=blue&style=flat-square)
 ![Image size](https://img.shields.io/docker/image-size/benediktkr/playonlinux/latest?sort=semver&label=size&style=flat-square)
 ![matrix](https://img.shields.io/static/v1?label=matrix&message=%23darkroom:sudo.is&color=purple&style=flat-square)
 
 a docker container with [PlayOnLinux](https://www.playonlinux.com/en/), using Ubuntu 22.04 as the base image.
 
-![screenshot of PlayOnLinux running in Docker](scrot.png#center)
+![screenshot of PlayOnLinux running in Docker](docs/img/scrot.png#center)
 
 ## usage
 

@@ -22,7 +22,7 @@ $ mkdir ~/playonlinux
 
 Pull and run the [`benediktkr/playonlinux` image from dockerhub](https://git.sudo.is/ben/playonlinux-docker/raw/branch/main/scrot.png):
 
-```console
+```shell
 $ docker run --rm -it \
     --privileged \
     --device /dev/dri/card0:/dev/dri/card0 \

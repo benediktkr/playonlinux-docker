@@ -1,67 +1,70 @@
+# `playonlinux-docker`
 
-# playonlinux-docker
 [![Build Status](https://jenkins.sudo.is/buildStatus/icon?job=ben%2Fplayonlinux-docker%2Fmain&style=flat-square)](https://jenkins.sudo.is/job/ben/job/playonlinux-docker/job/main/)
 [![git](docs/img/shields/git.sudo.is-ben-playonlinux-docker.svg)](https://git.sudo.is/ben/playonlinux-docker)
-[![github](https://git.sudo.is/ben/infra/media/branch/main/docs/img/shields/github-benediktkr.svg)](https://github.com/benediktkr/playonlinux-docker)
+[![github](https://www.sudo.is/readmes/github-benediktkr.svg)](https://github.com/benediktkr/playonlinux-docker)
 ![Docker pulls](https://img.shields.io/docker/pulls/benediktkr/playonlinux?sort=semver&color=blue&style=flat-square)
 ![Image size](https://img.shields.io/docker/image-size/benediktkr/playonlinux/latest?sort=semver&label=size&style=flat-square)
-![matrix](https://img.shields.io/static/v1?label=matrix&message=%23darkroom:sudo.is&color=purple&style=flat-square)
+[![matrix](https://www.sudo.is/readmes/matrix-ben-sudo.is.svg)](https://matrix.to/#/@ben:sudo.is)
 
-a docker container with [PlayOnLinux](https://www.playonlinux.com/en/), using Ubuntu 22.04 as the base image.
+A docker container for [PlayOnLinux](https://www.playonlinux.com/en/),
+using Ubuntu 22.04 as the base image.
 
-![screenshot of PlayOnLinux running in Docker](docs/img/scrot.png#center)
+![Screenshot of PlayOnLinux running in Docker](docs/img/scrot.png#center)
 
-## usage
+## Usage
 
-first create a directory for the PlayOnLinux data:
+First create a directory for the PlayOnLinux data:
 
-```shell
-mkdir ~/playonlinux
+```console
+$ mkdir ~/playonlinux
 ```
 
-pull and run the [`benediktkr/playonlinux` image from dockerhub](https://git.sudo.is/ben/playonlinux-docker/raw/branch/main/scrot.png):
+Pull and run the [`benediktkr/playonlinux` image from dockerhub](https://git.sudo.is/ben/playonlinux-docker/raw/branch/main/scrot.png):
 
-```shell
-docker run --rm -it --privileged --device /dev/dri/card0:/dev/dri/card0  -e DISPLAY=:0  -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v /dev/snd:/dev/snd:rw -v ~/playonlinux:/home/player:rw benediktkr/playonlinux:latest
+```console
+$ docker run --rm -it --privileged --device /dev/dri/card0:/dev/dri/card0  -e DISPLAY=:0  -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v /dev/snd:/dev/snd:rw -v ~/playonlinux:/home/player:rw benediktkr/playonlinux:latest
 ```
 
-if you want to run with a different UID and/or username, you can build the image.
+If you want to run with a different UID and/or username, you can build the image.
 
 ### 3d hardware acceleration
 
-hardware accelertion is possible, but you may have to install the correct drivers in
-the `Dockerfile` (pull requests welcome). the intel drivers are installed by default
-in the ubuntu image.
+Hardware accelertion is possible, but you may have to install the correct drivers in
+the `Dockerfile` (pull requests welcome). The Intel drivers are installed by default
+in the Ubuntu image.
 
-to pass your card to the container (as tested on an intel card):
+To pass your card to the container (as tested on an Intel card):
 
 ```shell
 --device /dev/dri/card0:/dev/dri/card0
 ```
 
-modify as needed for other cards
+Modify as needed for other cards.
 
-## build
+## Build
 
-to build with the default username `player` and UID `1000`:
+To build with the default username `player` and UID `1000`:
 
-```shell
-git clone https://git.sudo.is/ben/playonlinux-docker
-docker build -t playonlinux .
+```console
+$ git clone https://git.sudo.is/ben/playonlinux-docker
+$ docker build -t playonlinux .
 ```
 
-if you need or want to use a different UID or username:
+If you need or want to use a different UID or username:
 
-```shell
-docker build --build-arg UID=1001 --build-arg USER_NAME=user -t playonlinux .
+```console
+$ docker build --build-arg UID=1001 --build-arg USER_NAME=user -t playonlinux .
 ```
 
-## running the container
+## Running the container
 
-start PlayOnLinux:
+Start PlayOnLinux:
 
-```shell
-docker run --rm -it --privileged \
+```console
+$ mkdir ~/playonlinux
+$ docker run --rm -it \
+  --privileged \
   --device /dev/dri/card0:/dev/dri/card0 \
   -e DISPLAY=:0 \
   -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
@@ -70,10 +73,11 @@ docker run --rm -it --privileged \
   playonlinux
 ```
 
-starting Steam:
+Starting Steam:
 
-```shell
-docker run --rm -it --privileged \
+```console
+$ docker run --rm -it \
+  --privileged \
   --device /dev/dri/card0:/dev/dri/card0 \
   -e DISPLAY=:0 \
   -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
@@ -82,16 +86,16 @@ docker run --rm -it --privileged \
   playonlinux --run Steam
 ```
 
-the `ENTRYPOINT` of the container is the `playonlinux` binary, and any arguments you
+The `ENTRYPOINT` of the container is the `playonlinux` binary, and any arguments you
 pass are passed to it.
 
-these examples pass `--rm` to `docker run` to avoid leaving lingering stopped containers,
+These examples pass `--rm` to `docker run` to avoid leaving lingering stopped containers,
 so you should mount `/home/player` to a directory to keep your installs and game saves.
 
-## source
+## Source
 
-git repo: [git.sudo.is/ben/playonlinux-docker](https://git.sudo.is/ben/playonlinux-docker)
+Git repo: [git.sudo.is/ben/playonlinux-docker](https://git.sudo.is/ben/playonlinux-docker)
 
-github: [benediktkr/playonlinux-docker](https://github.com/benediktkr/playonlinux-docker)
+GitHub: [benediktkr/playonlinux-docker](https://github.com/benediktkr/playonlinux-docker)
 
-docker hub: [benediktkr/playonlinux](https://hub.docker.com/r/benediktkr/playonlinux)
+Docker Hub: [benediktkr/playonlinux](https://hub.docker.com/r/benediktkr/playonlinux)

@@ -23,7 +23,14 @@ $ mkdir ~/playonlinux
 Pull and run the [`benediktkr/playonlinux` image from dockerhub](https://git.sudo.is/ben/playonlinux-docker/raw/branch/main/scrot.png):
 
 ```console
-$ docker run --rm -it --privileged --device /dev/dri/card0:/dev/dri/card0  -e DISPLAY=:0  -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v /dev/snd:/dev/snd:rw -v ~/playonlinux:/home/player:rw benediktkr/playonlinux:latest
+$ docker run --rm -it \
+    --privileged \
+    --device /dev/dri/card0:/dev/dri/card0 \
+    -e DISPLAY=:0 \
+    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+    -v /dev/snd:/dev/snd:rw \
+    -v ~/playonlinux:/home/player:rw \
+    benediktkr/playonlinux:latest
 ```
 
 If you want to run with a different UID and/or username, you can build the image.
@@ -64,26 +71,26 @@ Start PlayOnLinux:
 ```console
 $ mkdir ~/playonlinux
 $ docker run --rm -it \
-  --privileged \
-  --device /dev/dri/card0:/dev/dri/card0 \
-  -e DISPLAY=:0 \
-  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-  -v /dev/snd:/dev/snd:rw \
-  -v ~/playonlinux:/home/player:rw \
-  playonlinux
+    --privileged \
+    --device /dev/dri/card0:/dev/dri/card0 \
+    -e DISPLAY=:0 \
+    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+    -v /dev/snd:/dev/snd:rw \
+    -v ~/playonlinux:/home/player:rw \
+    playonlinux
 ```
 
 Starting Steam:
 
 ```console
 $ docker run --rm -it \
-  --privileged \
-  --device /dev/dri/card0:/dev/dri/card0 \
-  -e DISPLAY=:0 \
-  -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
-  -v /dev/snd:/dev/snd:rw \
-  -v ~/playonlinux:/home/player:rw \
-  playonlinux --run Steam
+    --privileged \
+    --device /dev/dri/card0:/dev/dri/card0 \
+    -e DISPLAY=:0 \
+    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
+    -v /dev/snd:/dev/snd:rw \
+    -v ~/playonlinux:/home/player:rw \
+    playonlinux --run Steam
 ```
 
 The `ENTRYPOINT` of the container is the `playonlinux` binary, and any arguments you

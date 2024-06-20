@@ -68,7 +68,7 @@ $ docker build --build-arg UID=1001 --build-arg USER_NAME=user -t playonlinux .
 
 Start PlayOnLinux:
 
-```console
+```shell
 $ mkdir ~/playonlinux
 $ docker run --rm -it \
     --privileged \
@@ -82,7 +82,7 @@ $ docker run --rm -it \
 
 Starting Steam:
 
-```console
+```shell
 $ docker run --rm -it \
     --privileged \
     --device /dev/dri/card0:/dev/dri/card0 \

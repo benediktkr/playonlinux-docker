@@ -1,4 +1,5 @@
-FROM ubuntu:22.04
+# the 'latest' tag is LTS
+FROM ubuntu:latest
 MAINTAINER Ben K <ben@sudo.is>
 
 RUN apt-get update -y && \
